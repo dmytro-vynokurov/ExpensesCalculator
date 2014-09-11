@@ -1,19 +1,36 @@
 apply plugin: 'groovy'
 apply plugin: 'application'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
 
-mainClassName = 'df.ormtemplate.Main'
+//mainClassName = 'df.ormtemplate.Main'
 
 v = [
-    groovy: '2.1.6',
-    spring: '3.1.4.RELEASE',
-	hibernate: '4.2.4.Final',
-    junit: '4.11',
-    slf4j: '1.7.5',
-    logback: '1.0.13'
+        groovy: '2.1.6',
+        spring: '4.1.0.RELEASE',
+        hibernate: '4.2.4.Final',
+        junit: '4.11',
+        slf4j: '1.7.5',
+        logback: '1.0.13',
+        boot: '1.1.6.RELEASE',
+        rest: '2.2.0.RELEASE'
 ]
 
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.6.RELEASE")
+    }
+}
+
 repositories {
-	mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+    mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
@@ -25,7 +42,11 @@ dependencies {
         "org.springframework:spring-orm:$v.spring",
         "org.springframework:spring-tx:$v.spring",
 		"org.hibernate:hibernate-core:$v.hibernate",
-		"org.hsqldb:hsqldb:2.3.0"
+		"org.hsqldb:hsqldb:2.3.0",
+        "org.springframework:spring-webmvc:$v.spring",
+        "org.springframework.data:spring-data-rest-webmvc:$v.rest",
+        "org.springframework.boot:spring-boot-gradle-plugin:$v.boot",
+        "org.springframework.boot:spring-boot-starter-web:$v.boot"
     )
 
     runtime (
@@ -47,5 +68,11 @@ dependencies {
 
 configurations {
     all*.exclude group: "commons-logging", module: "commons-logging"
+}
+
+
+jar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
 }
 
