@@ -13,21 +13,27 @@ class PersonDao {
     @Autowired
     private SessionFactory sessionFactory
 
+    private Session session(){
+        sessionFactory.getCurrentSession()
+    }
+
     def peoplesFiltered(){
         Person examplePerson = new Person(lastName: "cooper")
         Example example = Example.create(examplePerson).ignoreCase().excludeProperty("creationDate")
-        sessionFactory.getCurrentSession().createCriteria(Person).add(example).list()
+        session().createCriteria(Person).add(example).list()
     }
 
     def peoples(){
-        Session session = sessionFactory.getCurrentSession()
-
-        session.saveOrUpdate(new Person(firstName: "Leonard", lastName: "Hofstadter"))
-        session.saveOrUpdate(new Person(firstName: "Sheldon", lastName: "Cooper"))
-        session.saveOrUpdate(new Person(firstName: "Howard", lastName: "Wolowitz"))
-        session.saveOrUpdate(new Person(firstName: "Rajesh", lastName: "Koothrappali"))
+        session().saveOrUpdate(new Person(firstName: "Leonard", lastName: "Hofstadter"))
+        session().saveOrUpdate(new Person(firstName: "Sheldon", lastName: "Cooper"))
+        session().saveOrUpdate(new Person(firstName: "Howard", lastName: "Wolowitz"))
+        session().saveOrUpdate(new Person(firstName: "Rajesh", lastName: "Koothrappali"))
 
 
-        session.createQuery("from Person").list()
+        session().createQuery("from Person").list()
+    }
+
+    def personById(int id){
+        session().get(Person.class,id)
     }
 }

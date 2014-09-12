@@ -3,8 +3,6 @@ apply plugin: 'application'
 apply plugin: 'spring-boot'
 apply plugin: 'idea'
 
-//mainClassName = 'df.ormtemplate.Main'
-
 v = [
         groovy: '2.1.6',
         spring: '4.1.0.RELEASE',
