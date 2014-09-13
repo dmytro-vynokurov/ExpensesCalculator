@@ -1,6 +1,6 @@
-create table expense(
-  id number auto_increment primary key,
-  name varchar,
-  amount number(10,2),
+create table Expense(
+  id integer primary key auto_increment ,
+  name varchar(256),
+  amount numeric (10,2),
   date timestamp
 );

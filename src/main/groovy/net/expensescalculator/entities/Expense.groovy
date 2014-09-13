@@ -1,5 +1,4 @@
 package net.expensescalculator.entities
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import groovy.transform.ToString
 import net.expensescalculator.util.JacksonDateTimeSerializer
@@ -9,11 +8,9 @@ import org.joda.time.DateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
-import javax.persistence.Table
 
 @Entity
 @ToString(includeNames=true)
-@Table(name="EXPENSE")
 class Expense {
 	@Id	@GeneratedValue
 	long id

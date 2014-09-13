@@ -15,11 +15,6 @@ class ExpenseDao extends AbstractDao{
 //        session().createCriteria(Expense).add(example).list()
 //    }
 
-    def prepare(){
-        session().saveOrUpdate(new Expense(name: "KFC", amount: 40.6, date: DateTime.parse("2014-09-06T11:33+02:00")))
-        session().saveOrUpdate(new Expense(name: "MacBook", amount: 32000, date: DateTime.parse("2014-09-16T11:33:56+02:00")))
-    }
-
     def expenses(){
         session().createQuery("select e from Expense e").list()
     }

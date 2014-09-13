@@ -13,11 +13,6 @@ class ExpenseController {
     @Autowired
     ExpenseDao dao
 
-    @RequestMapping("/prepare")
-    String prepare(){
-        dao.prepare()
-        return "<a href='http://localhost:8080/expenses'>Expenses</a>"
-    }
 
     @RequestMapping("/expenses")
     List<Expense> getExpenses(){
