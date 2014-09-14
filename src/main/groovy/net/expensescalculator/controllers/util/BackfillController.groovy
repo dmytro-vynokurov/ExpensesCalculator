@@ -1,4 +1,4 @@
-package net.expensescalculator.controllers
+package net.expensescalculator.controllers.util
 
 import net.expensescalculator.dao.BackfillDao
 import org.springframework.beans.factory.annotation.Autowired
@@ -6,15 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@RequestMapping("/backfill")
 class BackfillController {
-    public static final String EXPENSES_PAGE = "<a href='http://localhost:8080/expenses'>Expenses</a>"
-
     @Autowired
     BackfillDao dao
 
-    @RequestMapping("/backfill_expenses")
+    @RequestMapping("/expenses")
     String prepare(){
         dao.backfillExpenses()
-        return EXPENSES_PAGE
+        return "Expenses backfilled"
     }
 }

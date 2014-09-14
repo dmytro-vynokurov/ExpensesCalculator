@@ -22,4 +22,8 @@ class ExpenseDao extends AbstractDao{
     def expenseById(long id){
         session().get(Expense.class,id)
     }
+
+    def addExpense(Expense expense){
+        session().saveOrUpdate(expense)
+    }
 }

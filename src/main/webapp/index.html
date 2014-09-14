@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Expenses</title>
+    <link rel="stylesheet" href="http://localhost:8080/css/jquery.datetimepicker.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://localhost:8080/js/jquery.datetimepicker.js"></script>
+</head>
+<body>
+    <h1>Expenses index page</h1>
+    Controls:
+    <ul>
+        <li>view expenses: <button onclick="location.href='http://localhost:8080/rest/expenses'">Expenses</button></li>
+        <li>view expense by id:
+            <form action="http://localhost:8080/rest/expense" method="get">
+                <input type="text" name="id"/>
+                <button type="submit">Go</button>
+            </form>
+        </li>
+        <li>add expense:
+            <form action="http://localhost:8080/rest/expense" method="post">
+                <label>
+                    Name: <input type="text" name="name"/>
+                </label>
+                <label>
+                    Amount: <input type="number" name="amount"/>
+                </label>
+                <label>
+                    Date: <input type="text" id="datetimepicker_mask" name="date"/>
+                </label>
+                <script>
+                    $('#datetimepicker_mask').datetimepicker({
+                        mask:'9999/19/39 29:59'
+                    });
+                </script>
+                <button type="submit">Add expense</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

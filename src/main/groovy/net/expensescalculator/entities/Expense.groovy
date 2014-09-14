@@ -1,4 +1,5 @@
 package net.expensescalculator.entities
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import groovy.transform.ToString
 import net.expensescalculator.util.JacksonDateTimeSerializer
